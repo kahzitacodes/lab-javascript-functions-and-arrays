@@ -315,7 +315,40 @@ const matrix = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function greatestProduct(matrizArr) {
+	
+	let result = 0;
+	let greatest = 0;
+	let count = 4;
+	
+	for (let i = 0; i < matrizArr.length; i++) {
+		
+		for (let j = 0; j < matrizArr[i].length; j++) {
+			
+			if ((j - 3) >= (count - 4) && (j + 3) >= count){
+				
+				result = matrizArr[i][j] * matrizArr[i][j -1] * matrizArr[i][j - 2] * matrizArr[i][j - 3];
+				count += 4;
+				
+				if (result > greatest) {
+					greatest = result;
+				}
+			}
+			
+			if ((i - 3) >= (count - 4) && (i + 3) >= count) {
+				
+				result = matrizArr[i][j] * matrizArr[i - 1][j] * matrizArr[i - 2][j] * matrizArr[i - 3][j];
+				count += 4;
+				
+				if (result > greatest) {
+					greatest = result;
+				}
+			}
+		}
+	}
+
+  return greatest
+}
 
 
 
